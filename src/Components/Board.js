@@ -6,7 +6,6 @@ import { selectNote  } from '../Actions/';
 import Styles from '../Styles';
 
 class Board extends React.Component {
-
   AddNote() {
     return (
       <View>
