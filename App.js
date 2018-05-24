@@ -11,7 +11,7 @@ import logger from 'redux-logger';
 
 import navigation from './src/Reducers/reducer_nav';
 
-import Navigation from './src/Components/Navigator';
+import Navigator from './src/Components/Navigator';
 
 const reducer = combineReducers({ navigation });
 const store = createStore(reducer, applyMiddleware(logger));
