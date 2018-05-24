@@ -2,23 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, TextInput, Text  } from 'react-native';
 import Button from 'react-native-flat-button';
-import nodejs from 'nodejs-mobile-react-native';
 import { selectNote  } from '../Actions/';
 import Styles from '../Styles';
 
 class Board extends React.Component {
-  componentWillMount() {
-    nodejs.start('main.js');
-    nodejs.channel.addListener(
-      'message',
-      (msg) => {
-        alert('From node: ' + msg);
-      },
-      this
-    );
-  }
 
-  AddNote = () => {
+  AddNote() {
     return (
       <View>
         <Text>
@@ -34,7 +23,7 @@ class Board extends React.Component {
       <View
         style={ Styles.container}>
         <Button
-          onPress={() => nodejs.channel.send('A message !')}
+          onPress={() => this.AddNote.bind(this)}
           type='custom'
           backgroundColor={'#0077b3'}
           borderColor={'#fff'}
