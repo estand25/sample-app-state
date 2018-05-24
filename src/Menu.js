@@ -1,31 +1,34 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-// import { Provider } from 'react-native';
-// import { createStore, applyMiddleware } from 'redux';
-// import ReduxThunk from 'redux-thunk';
+import { Provider } from 'react-native';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
 import Button from 'react-native-flat-button';
-// import reducers from './Reducers';
+import reducers from './Reducers';
+import Styles from './Styles';
 
 class Menu extends React.Component {
   static navigationOptions = {
     title: 'Menu',
   };
 
-  // const store = createStore(reducers, {}, applyMiddleware(ReduxThunk))
-
   render() {
-    // <Provider store={store} >
-      <View>
-        <View>
-          <Button
-            type="primary"
-            onPress={() => this.props.navigation.navigate('Board')}
-          >
-          Board
-          </Button>
+    // const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+
+    return (
+      // <Provider store={store} >
+        <View style={Styles.container}>
+          <View style={Styles.subContainerStyle}>
+            <Button
+              type="primary"
+              onPress={() => this.props.navigation.navigate('Board')}
+            >
+            Board
+            </Button>
+          </View>
         </View>
-      </View>
-    // </Provider>
+       // </Provider>
+    )
   }
 }
 
