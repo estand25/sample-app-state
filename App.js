@@ -3,24 +3,13 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { Text, View } from 'react-native';
 import firebase from 'firebase';
-import { createStackNavigator } from 'react-navigation';
 import logger from 'redux-logger';
 
-// import Menu from './src/Menu';
-// import Board from './src/Components/Board';
-
 import navigation from './src/Reducers/reducer_nav';
-
-import Navigator from './src/Components/Navigator';
+import Navigator, { middleware } from './src/Components/Navigator';
 
 const reducer = combineReducers({ navigation });
-const store = createStore(reducer, applyMiddleware(logger));
-
-// const RootStack = createStackNavigator({
-//   Board: Board,
-// },{
-//   initialRouteName: 'Board',
-// });
+const store = createStore(reducer, applyMiddleware(logger,middleware));
 
 export default class App extends React.Component {
   componentWillMount(){

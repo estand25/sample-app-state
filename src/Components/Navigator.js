@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
   StackNavigator,
-  addNavigationHelper,
+  addNavigationHelpers,
 } from 'react-navigation';
 import {
   createReduxBoundAddListener,
@@ -27,13 +27,15 @@ export const middleware = createReactNavigationReduxMiddleware(
 const addListener = createReduxBoundAddListener("root");
 
 class Nav extends React.Component {
+  // const { dispatch, navigation } = this.props;
+
   render() {
     return (
-      <Navigator navigation={addNavigationHelper({
+      <Navigator navigation={{
         dispatch: this.props.dispatch,
         state: this.props.navigation,
         addListener
-      })} />
+      }} />
     )
   }
 }

@@ -9,9 +9,15 @@ export default (state = initialState, action) => {
 
   if(action.params && action.params.replace){
     const { index } = newState
-    newState.routes.splice(index - 1, 1)
+    newState.routes.splice(newState.index - 1, 1)
     newState.index--
   }
+
+  newState.routes.forEach((route, i) => {
+    if (!route.params) route.params = {}
+    if (i === newState.index) route.params.active = true
+    else route.params.active = false
+  })
 
   return newState
 }
