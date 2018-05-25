@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
-  StackNavigator,
-  addNavigationHelpers,
+  createStackNavigator,
 } from 'react-navigation';
 import {
   createReduxBoundAddListener,
@@ -12,12 +11,12 @@ import {
 import Board from './Board';
 import Note from './Note';
 
-export const Navigator = new StackNavigator({
+export const Navigator = createStackNavigator({
   Board: Board,
   Note: Note,
 },{
   initialRouteName: 'Board',
-})
+});
 
 export const middleware = createReactNavigationReduxMiddleware(
   "root",
@@ -27,8 +26,6 @@ export const middleware = createReactNavigationReduxMiddleware(
 const addListener = createReduxBoundAddListener("root");
 
 class Nav extends React.Component {
-  // const { dispatch, navigation } = this.props;
-
   render() {
     return (
       <Navigator navigation={{
