@@ -10,12 +10,14 @@ import {
 
 import Board from './Board';
 import Note from './Note';
+import LogIn from './LogIn';
 
-export const Navigator = createStackNavigator({
-  Board: Board,
+export const AppNavigator = createStackNavigator({
+  Main: Board,
   Note: Note,
+  LogIn: LogIn,
 },{
-  initialRouteName: 'Board',
+  initialRouteName: 'LogIn',
 });
 
 export const middleware = createReactNavigationReduxMiddleware(
@@ -25,20 +27,14 @@ export const middleware = createReactNavigationReduxMiddleware(
 
 const addListener = createReduxBoundAddListener("root");
 
-class Nav extends React.Component {
-  render() {
-    return (
-      <Navigator navigation={{
-        dispatch: this.props.dispatch,
-        state: this.props.navigation,
-        addListener
-      }} />
-    )
-  }
-}
+const AppWithNavigationState = ({ dispatch, navigation }) => (
+  <AppNavigator
+    navigation={{ dispatch, state: navigation, addListener }}
+  />
+);
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   navigation: state.navigation,
-})
+});
 
-export default connect(mapStateToProps)(Nav)
+export default connect(mapStateToProps,null)(AppWithNavigationState);

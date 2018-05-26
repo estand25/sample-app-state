@@ -1,15 +1,12 @@
 import React from 'react';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { Text, View } from 'react-native';
 import firebase from 'firebase';
-import logger from 'redux-logger';
 
-import navigation from './src/Reducers/reducer_nav';
-import Navigator, { middleware } from './src/Components/Navigator';
+import Reducers from './src/Reducers';
+import AppWithNavigationState from './src/Components/Navigator';
 
-const reducer = combineReducers({ navigation });
-const store = createStore(reducer, applyMiddleware(logger,middleware));
+const store = createStore(Reducers);
 
 export default class App extends React.Component {
   componentWillMount(){
@@ -28,7 +25,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Navigator />
+        <AppWithNavigationState />
       </Provider>
     );
   }

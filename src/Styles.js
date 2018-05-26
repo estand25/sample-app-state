@@ -13,5 +13,12 @@ export default StyleSheet.create({
     backgroundColor: '#0077b3',
     padding: 10
   },
-
+  inputStyle: {
+    color: '#000',
+    paddingRight: 5,
+    paddingLeft: 5,
+    fontSize: 18,
+    lineHeight: 1,
+    flex: 2
+  }
 });
