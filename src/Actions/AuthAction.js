@@ -18,8 +18,9 @@ export const passwordChanged = (text) => ({
 });
 
 export const loginUser = ({ email, password }) => (dispatch) => {
+  // console.log(`loginUser 1 - Email: ${email} Password: ${password} `);
   dispatch({ type: LOGIN_USER });
-  console.log(`loginUser - Email: ${email} Password: ${password} `);
+  // console.log(`loginUser 2 - Email: ${email} Password: ${password} `);
 
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then(user => logInUserSuccess(dispatch, user))
@@ -40,5 +41,5 @@ const logInUserSuccess = (dispatch, user) => {
     payload: loginUser
   });
 
-
+  console.log(`logInUserSuccess - ${loginUser}`);
 }

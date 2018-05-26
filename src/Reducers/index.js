@@ -6,7 +6,7 @@ import ReducerUser from './ReducerUser';
 const rootReducer = combineReducers({
   activeNote: active_note,
   navigation: ReducerNav,
-  user: ReducerUser
+  auth: ReducerUser,
 });
 
 export default rootReducer;

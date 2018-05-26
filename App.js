@@ -1,12 +1,13 @@
 import React from 'react';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import firebase from 'firebase';
+import ReduxThunk from 'redux-thunk';
 
 import Reducers from './src/Reducers';
 import AppWithNavigationState from './src/Components/Navigator';
 
-const store = createStore(Reducers);
+const store = createStore(Reducers, {}, applyMiddleware(ReduxThunk));
 
 export default class App extends React.Component {
   componentWillMount(){
