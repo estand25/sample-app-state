@@ -6,6 +6,21 @@ import { selectNote  } from '../Actions/';
 import Styles from '../Styles';
 
 class Board extends React.Component {
+  static navigationOptions = {
+    title: 'Board',
+    headerRight: (
+      <Button
+        type='custom'
+        backgroundColor={'#0077b3'}
+        borderColor={'#fff'}
+        borderRadius={2}
+        onPress={() => this.props.navigation.navigate('LogOut')}
+      >
+        LogOut
+      </Button>
+    )
+  };
+
   render(){
     return (
       <View

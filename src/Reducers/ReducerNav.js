@@ -6,8 +6,8 @@ import { AppNavigator } from '../Components/Navigator';
 // } from '../Actions/types';
 
 const router = AppNavigator.router;
-// const logInNavAction = router.getActionForPathAndParams('LogIn')
-// const initialNavState = router.getStateForAction(logInNavAction)
+const logInNavAction = router.getActionForPathAndParams('LogIn')
+const initialNavState = router.getStateForAction(logInNavAction)
 //
 // const boardNavAction = router.getActionForPathAndParams('Board')
 // const stateForBoard = router.getStateForAction(boardNavAction);
