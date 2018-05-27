@@ -34,7 +34,7 @@ class LogIn extends React.Component {
   renderError() {
     if(this.props.error) {
       return (
-        <View style={{ backgroundColor: 'white', alignSelf: 'center' }} >
+        <View style={{ alignSelf: 'center' }} >
           <Text style={{
             fontSize: 20,
             color: 'red'

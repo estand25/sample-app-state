@@ -7,7 +7,7 @@ import ReduxThunk from 'redux-thunk';
 import Reducers from './src/Reducers';
 import AppWithNavigationState from './src/Components/Navigator';
 
-const store = createStore(Reducers, {}, applyMiddleware(ReduxThunk));
+const store = createStore(Reducers, applyMiddleware(ReduxThunk));
 
 export default class App extends React.Component {
   componentWillMount(){

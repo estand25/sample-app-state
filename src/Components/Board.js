@@ -10,7 +10,7 @@ class Board extends React.Component {
     return (
       <View
         style={ Styles.container}>
-        <View style={{ flex: 1, top:0, alignContent:'flex-end'}}>
+        {/* <View style={{ flex: 1, top:0, alignContent:'flex-end'}}>
           <Button
             onPress={() => this.props.navigation.navigate('LogOut')}
             type='custom'
@@ -21,7 +21,7 @@ class Board extends React.Component {
           >
             LogOut
           </Button>
-        </View>
+        </View> */}
         <Button
           onPress={() => this.props.navigation.navigate('Note')}
           type='custom'

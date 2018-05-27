@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import { NavigationActions } from 'react-navigation';
 import {
   EMAIL_CHANGED,
   PASSWORD_CHANGED,
@@ -41,5 +42,14 @@ const logInUserSuccess = (dispatch, user) => {
     payload: loginUser
   });
 
-  goToBoard();
+  const navigateAction = NavigationActions.navigate({
+    routeName: 'Board',
+    params:{},
+    action: NavigationActions.navigate({ routeName: 'Board'})
+  });
+
+  this.props.navigation.dispatch(navigateAction);
+
+  // goToBoard(dispatch);
+
 }

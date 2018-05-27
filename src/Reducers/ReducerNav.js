@@ -16,13 +16,16 @@ const noteNavAction = router.getActionForPathAndParams('Note')
 const stateForNote = router.getStateForAction(noteNavAction)
 
 export default (state = initialNavState, action) => {
-   console.log(`ReducerNav1 - ${GOTO_BOARD}`);
- switch (action.type) {
-   case GOTO_BOARD:
-      console.log(`ReducerNav2 - ${GOTO_BOARD}`);
-     return router.getStateForAction(boardNavAction, stateForBoard)
-   default:
-      console.log(`ReducerNav3 - ${action.type}`);
-      return router.getStateForAction(action, state);
- }
+ //   // console.log(`ReducerNav1 - ${GOTO_BOARD} - action.type ${action.type}`);
+ // switch (action.type) {
+ //   case GOTO_BOARD:
+ //     //  console.log(`ReducerNav2 - ${GOTO_BOARD}, boardNavAction - ${boardNavAction}, stateForBoard - ${stateForBoard}`);
+ //     // return router.getStateForAction(boardNavAction, stateForBoard);
+ //     return router.getComponentForRouteName('Board');
+ //   default:
+ console.log(`default - ${action.type}`);
+  // return router.getStateForAction(action, state);
+ // }
+ const newState = router.getStateForAction(action, state);
+ return newState || state;
 };
