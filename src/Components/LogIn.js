@@ -1,10 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, Text, TextInput, Button, ActivityIndicator } from 'react-native';
+// import Orientation from 'react-native-orientation';
 import { emailChanged, passwordChanged, loginUser } from '../Actions';
 import Styles from '../Styles';
 
 class LogIn extends React.Component {
+  componentDidMount () {
+    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
+  }
+
   onEmailChange(text) {
     this.props.emailChanged(text);
   }

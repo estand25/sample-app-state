@@ -1,10 +1,23 @@
 import React from 'react';
 import { View, TextInput, Text } from 'react-native';
+import Button from 'react-native-flat-button';
 import Styles from '../Styles';
 
 class Note extends React.Component {
-  static navigationOptions = {
-    title: 'Note'
+  static navigationOptions = ({ navigation }) =>{
+    return {
+      title: 'Note',
+      headerRight: (
+        <Button
+          type='custom'
+          borderColor={'#0077b3'}
+          borderRadius={5}
+          onPress={() => navigation.navigate('LogOut')}
+        >
+          LogOut
+        </Button>
+      )
+    }
   };
 
   render() {

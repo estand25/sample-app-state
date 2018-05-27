@@ -7,6 +7,7 @@ import {
   createReduxBoundAddListener,
   createReactNavigationReduxMiddleware,
 } from 'react-navigation-redux-helpers';
+import Button from 'react-native-flat-button';
 
 import Board from './Board';
 import Note from './Note';
@@ -14,10 +15,20 @@ import LogIn from './LogIn';
 import LogOut from './LogOut';
 
 export const AppNavigator = createStackNavigator({
-  Board: Board,
-  Note: Note,
-  LogIn: LogIn,
-  LogOut: LogOut,
+  Board: {
+    screen: Board,
+    navigationOptions: {
+      headerLeft: () => null,
+    }
+  },
+  Note: { screen: Note },
+  LogIn: { screen: LogIn },
+  LogOut: {
+    screen: LogOut,
+    navigationOptions: {
+      header: () => null,
+    },
+  }
 },{
   initialRouteName: 'LogIn',
 });

@@ -1,42 +1,29 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { View, TextInput, Text  } from 'react-native';
-import Button from 'react-native-flat-button';
-import { selectNote  } from '../Actions/';
-import Styles from '../Styles';
+import React from 'react'
+import { View, TextInput, Text  } from 'react-native'
+import Button from 'react-native-flat-button'
+import Styles from '../Styles'
 
 class Board extends React.Component {
-  static navigationOptions = {
-    title: 'Board',
-    headerRight: (
-      <Button
-        type='custom'
-        backgroundColor={'#0077b3'}
-        borderColor={'#fff'}
-        borderRadius={2}
-        onPress={() => this.props.navigation.navigate('LogOut')}
-      >
-        LogOut
-      </Button>
-    )
+  static navigationOptions  = ({ navigation }) => {
+    return {
+      title: 'Board',
+      headerRight: (
+        <Button
+          type='custom'
+          borderColor={'#0077b3'}
+          borderRadius={5}
+          onPress={() => navigation.navigate('LogOut')}
+        >
+          LogOut
+        </Button>
+      )
+    }
   };
 
   render(){
     return (
       <View
         style={ Styles.container}>
-        {/* <View style={{ flex: 1, top:0, alignContent:'flex-end'}}>
-          <Button
-            onPress={() => this.props.navigation.navigate('LogOut')}
-            type='custom'
-            backgroundColor={'#0077b3'}
-            borderColor={'#fff'}
-            borderRadius={5}
-            shadowHeight={2}
-          >
-            LogOut
-          </Button>
-        </View> */}
         <Button
           onPress={() => this.props.navigation.navigate('Note')}
           type='custom'
@@ -51,7 +38,5 @@ class Board extends React.Component {
     )
   }
 }
-// const mapStateToProps = (state) => {
-//   const { selectedNote }
-// }
+
 export default Board;
