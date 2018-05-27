@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, Text, TextInput, Button, ActivityIndicator } from 'react-native';
-// import Orientation from 'react-native-orientation';
 import { emailChanged, passwordChanged, loginUser } from '../Actions';
 import Styles from '../Styles';
 
 class LogIn extends React.Component {
+  static navigationOptions = {
+    title: 'Log In'
+  }
+
   componentDidMount () {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
   }

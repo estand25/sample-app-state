@@ -8,10 +8,19 @@ class LogOut extends React.Component {
   static navigationOptions = {
     title: 'Log-Out'
   }
+  
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text style={{ fontSize: 30, color: 'white' }}>
+      <View style={{
+          flex: 1,
+          backgroundColor: '#181c36',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+        <Text style={{
+          fontSize: 30,
+          color: 'white'
+        }}>
           Logging Out
         </Text>
         <Button
