@@ -4,8 +4,6 @@ import {
 } from './types';
 
 export const goToBoard = (dispatch) => {
-  // console.log(`NavAction - ${GOTO_BOARD}`);
-  // dispatch({ type: GOTO_BOARD });
   dispatch(NavigationActions.navigate({
     routeName: 'Board',
   }));
