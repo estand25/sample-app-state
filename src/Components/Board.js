@@ -27,8 +27,8 @@ class Board extends React.Component {
         <Button
           onPress={() => this.props.navigation.navigate('Note')}
           type='custom'
-          backgroundColor={'#0077b3'}
-          borderColor={'#fff'}
+          backgroundColor={'#181c36'}
+          borderColor={'#0077b3'}
           borderRadius={5}
           shadowHeight={2}
         >
