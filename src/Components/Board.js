@@ -10,6 +10,18 @@ class Board extends React.Component {
     return (
       <View
         style={ Styles.container}>
+        <View style={{ flex: 1, top:0, alignContent:'flex-end'}}>
+          <Button
+            onPress={() => this.props.navigation.navigate('LogOut')}
+            type='custom'
+            backgroundColor={'#0077b3'}
+            borderColor={'#fff'}
+            borderRadius={5}
+            shadowHeight={2}
+          >
+            LogOut
+          </Button>
+        </View>
         <Button
           onPress={() => this.props.navigation.navigate('Note')}
           type='custom'

@@ -1,24 +1,49 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, ActivityIndicator } from 'react-native';
 import { emailChanged, passwordChanged, loginUser } from '../Actions';
 import Styles from '../Styles';
 
 class LogIn extends React.Component {
   onEmailChange(text) {
-    // console.log(`onEmailChange - Email: ${text} `);
     this.props.emailChanged(text);
   }
 
   onPasswordChange(text) {
-    // console.log(`onPasswordChange - Password: ${text} `);
     this.props.passwordChanged(text);
   }
 
   onButtonPress() {
     const { email, password } = this.props;
-    console.log(`onButtonPress - Email: ${email} Password: ${password} `);
     this.props.loginUser({ email, password });
+  }
+
+  renderButton() {
+    if(this.props.loading){
+      return <ActivityIndicator size='large' />
+    }
+
+    return (
+      <Button
+        title='Submit'
+        onPress={this.onButtonPress.bind(this)}
+      />
+    )
+  }
+
+  renderError() {
+    if(this.props.error) {
+      return (
+        <View style={{ backgroundColor: 'white', alignSelf: 'center' }} >
+          <Text style={{
+            fontSize: 20,
+            color: 'red'
+          }}>
+            {this.props.error}
+          </Text>
+        </View>
+      );
+    }
   }
 
   render() {
@@ -36,10 +61,12 @@ class LogIn extends React.Component {
             value={this.props.password}
           />
         </View>
-        <Button
-          title='Submit'
-          onPress={this.onButtonPress.bind(this)}
-        />
+        <View>
+          {this.renderButton()}
+        </View>
+        <View>
+          {this.renderError()}
+        </View>
       </View>
     );
   }

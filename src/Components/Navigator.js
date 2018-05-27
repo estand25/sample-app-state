@@ -11,11 +11,13 @@ import {
 import Board from './Board';
 import Note from './Note';
 import LogIn from './LogIn';
+import LogOut from './LogOut';
 
 export const AppNavigator = createStackNavigator({
-  Main: Board,
+  Board: Board,
   Note: Note,
   LogIn: LogIn,
+  LogOut: LogOut,
 },{
   initialRouteName: 'LogIn',
 });

@@ -6,6 +6,9 @@ import {
   LOGIN_USER_FAIL,
   LOGIN_USER
 } from './types'
+import {
+  goToBoard
+} from './NavAction'
 
 export const emailChanged = (text) => ({
   type: EMAIL_CHANGED,
@@ -18,10 +21,7 @@ export const passwordChanged = (text) => ({
 });
 
 export const loginUser = ({ email, password }) => (dispatch) => {
-  // console.log(`loginUser 1 - Email: ${email} Password: ${password} `);
   dispatch({ type: LOGIN_USER });
-  // console.log(`loginUser 2 - Email: ${email} Password: ${password} `);
-
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then(user => logInUserSuccess(dispatch, user))
     .catch(() =>{
@@ -41,5 +41,5 @@ const logInUserSuccess = (dispatch, user) => {
     payload: loginUser
   });
 
-  console.log(`logInUserSuccess - ${loginUser}`);
+  goToBoard();
 }
