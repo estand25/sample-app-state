@@ -8,6 +8,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-27.0.0.tar.gz",
     "react-native-flat-button": "^1.0.6",
     "react-native-orientation": "git+https://github.com/yamill/react-native-orientation.git",
+    "react-native-orientation-listener": "0.0.4",
     "react-navigation": "^2.0.2",
     "react-navigation-redux-helpers": "^1.1.1",
     "react-redux": "^5.0.7",

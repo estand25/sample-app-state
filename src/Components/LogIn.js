@@ -1,8 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Text, TextInput, ActivityIndicator } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  ActivityIndicator,
+  Dimensions,
+} from 'react-native';
 import Button from 'react-native-flat-button';
-import { emailChanged, passwordChanged, loginUser } from '../Actions';
+import {
+  emailChanged,
+  passwordChanged,
+  loginUser,
+  orientationChanged,
+} from '../Actions';
 import Styles from '../Styles';
 
 class LogIn extends React.Component {
@@ -52,7 +63,8 @@ class LogIn extends React.Component {
   renderError() {
     if(this.props.error) {
       return (
-        <View style={{ alignSelf: 'center' }} >
+        <View style={{ alignSelf: 'center' }}
+        >
           <Text style={{
             fontSize: 20,
             color: 'red'
@@ -64,9 +76,25 @@ class LogIn extends React.Component {
     }
   }
 
+  onLayout(e) {
+    const {width, height} = Dimensions.get('window');
+    if(width > height){
+      var orientation = 'LANDSCAPE';
+    } else {
+      var orientation = 'PORTRAIT';
+    }
+    console.log(`Orientation: ${orientation}`);
+    this.props.orientationChanged(orientation);
+  }
+
   render() {
     return(
-      <View style={{ flex: 1, backgroundColor: '#181c36'}}>
+      <View
+        onLayout={this.onLayout.bind(this)}
+        style={{
+          flex: 1,
+          backgroundColor: '#181c36'
+        }}>
         <View>
           <View>
             <Text
@@ -121,11 +149,12 @@ class LogIn extends React.Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, orie }) => {
   const { email, password, user, error, loading } = auth;
-  return { email, password, user, error, loading };
+  const { orientation } = orie;
+  return { email, password, user, error, loading, orientation };
 }
 
 export default connect(mapStateToProps, {
-  emailChanged, passwordChanged, loginUser
+  emailChanged, passwordChanged, loginUser, orientationChanged
 })(LogIn);

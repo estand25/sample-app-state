@@ -1,17 +1,26 @@
 import React from 'react';
-import { View, TextInput, Text, Dimensions } from 'react-native';
+import { connect } from 'react-redux';
+import {
+  View,
+  TextInput,
+  Text,
+  Dimensions
+} from 'react-native';
 import Button from 'react-native-flat-button';
-import Orientation from 'react-native-orientation'
+import {
+  orientationChanged
+} from '../Actions';
 import Styles from '../Styles';
 
 class Note extends React.Component {
   state = {
-    value: '',
+    noteTitle: '',
+    noteBody: '',
     width: 100,
-    widthLandscape: 350,
-    widthPortrait: 400
+    widthLandscape: 650,
+    widthPortrait: 370
   };
-// var Orientation = require('react-native-orientation');
+
   _orientationDidChange(orientation){
     const { widthLandscape, widthPortrait } = this.state;
     if(orientation == 'LANDSCAPE'){
@@ -20,26 +29,6 @@ class Note extends React.Component {
       this.setState({width: widthPortrait})
     }
   }
-
-  componentWillMount() {
-    var initial = Orientation.getInitialOrientation();
-    if (initial === 'PORTRAIT') {
-      this.setState({width: widthPortrait})
-    } else {
-      this.setState({width: widthLandscape})
-    }
-  }
-  
-  componentWillUnmount() {
-    Orientation.getOrientation((err,orientation)=> {
-      console.log("Current Device Orientation: ", orientation);
-    });
-    Orientation.removeOrientationListener(this._orientationDidChange);
-  }
-
-  // updateSize = (width) =>{
-  //   this.setState({width});
-  // }
 
   static navigationOptions = ({ navigation }) =>{
     return {
@@ -57,33 +46,47 @@ class Note extends React.Component {
     }
   };
 
+
+  onLayout(e) {
+    const {width, height} = Dimensions.get('window');
+    if(width > height){
+      var orientation = 'LANDSCAPE';
+    } else {
+      var orientation = 'PORTRAIT';
+    }
+    console.log(`Orientation: ${orientation}`);
+    this.props.orientationChanged(orientation);
+    this._orientationDidChange(orientation);
+  }
+
   render() {
-    const { value, width } = this.state;
+    const { noteTitle, noteBody, width } = this.state;
 
     let newStyle = {
       width
     }
 
-    console.log(`Width: ${width}`);
     return (
-      <View style={Styles.container}>
-        <View style={{ flex: 1, padding: 10, backgroundColor: '#fff'}}>
+      <View
+        onLayout={this.onLayout.bind(this)}
+        style={Styles.container}
+      >
+        <View style={{ flex: 1, padding: 10, backgroundColor: '#fff', width: width}}>
           <TextInput
             placeholder='Title'
             editable={true}
-            multiline={true}
-            // onChangeText={(value) => this.setState({value})}
-            style={[newStyle]}
-            value={value}
-            // onContentSizeChange={(e) => this.updateSize(e.nativeEvent.contentSize.width)}
+            maxLength={2}
+            // style={{ flex: 1}}
+            value={noteTitle}
           />
         </View>
-        <View style={{ flex: 2, padding: 10, backgroundColor: '#fff'}}>
+        <View style={{ flex: 2, padding: 10, backgroundColor: '#fff', width: width}}>
           <TextInput
             placeholder="Note"
             editable={true}
             maxLength={40}
-            style={{alignItems: 'stretch'}}
+            // style={{ flex: 1}}
+            value={noteBody}
           />
         </View>
       </View>
@@ -91,4 +94,9 @@ class Note extends React.Component {
   }
 }
 
-export default Note;
+ const mapStateToProps = ({ orie }) => {
+   const { orientation } = orie;
+   return { orientation };
+ }
+
+export default connect(mapStateToProps, {orientationChanged})(Note);
