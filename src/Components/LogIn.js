@@ -65,10 +65,7 @@ class LogIn extends React.Component {
       return (
         <View style={{ alignSelf: 'center' }}
         >
-          <Text style={{
-            fontSize: 20,
-            color: 'red'
-          }}>
+          <Text style={Styles.logInErrorText}>
             {this.props.error}
           </Text>
         </View>
@@ -91,18 +88,10 @@ class LogIn extends React.Component {
     return(
       <View
         onLayout={this.onLayout.bind(this)}
-        style={{
-          flex: 1,
-          backgroundColor: '#181c36'
-        }}>
+        style={Styles.borderView}>
         <View>
           <View>
-            <Text
-                style={{
-                  fontSize: 13,
-                  color: 'white'
-                }}
-            >
+            <Text style={Styles.logInLabelText}>
               Email:
             </Text>
             <TextInput
@@ -110,19 +99,11 @@ class LogIn extends React.Component {
               placeholderTextColor='#0077b3'
               onChangeText={this.onEmailChange.bind(this)}
               value={this.props.email}
-              style={{
-                fontSize: 20,
-                color: '#0077b3'
-              }}
+              style={Styles.logInTextInput}
             />
           </View>
             <View>
-              <Text
-                style={{
-                  fontSize: 13,
-                  color: 'white'
-                }}
-              >
+              <Text style={Styles.logInLabelText}>
                 Password:
               </Text>
               <TextInput
@@ -131,17 +112,14 @@ class LogIn extends React.Component {
                 placeholderTextColor='white'
                 onChangeText={this.onPasswordChange.bind(this)}
                 value={this.props.password}
-                style={{
-                  fontSize: 20,
-                  color: 'white'
-                }}
+                style={Styles.logInTextInput}
               />
           </View>
         </View>
-        <View style={{ backgroundColor: '#181c36' }}>
+        <View style={Styles.backGroundView}>
           {this.renderButton()}
         </View>
-        <View style={{ backgroundColor: '#181c36' }}>
+        <View style={Styles.backGroundView}>
           {this.renderError()}
         </View>
       </View>

@@ -8,23 +8,16 @@ class LogOut extends React.Component {
   static navigationOptions = {
     title: 'Log-Out'
   }
-  
+
   render() {
     return (
-      <View style={{
-          flex: 1,
-          backgroundColor: '#181c36',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
-        <Text style={{
-          fontSize: 30,
-          color: 'white'
-        }}>
+      <View style={Styles.container}>
+        <Text style={Styles.logOutTextInput}>
           Logging Out
         </Text>
         <Button
           type='custom'
+          backgroundColor={'#181c36'}
           borderColor={'#0077b3'}
           borderRadius={5}
           onPress={() => this.props.navigation.navigate('LogIn')}

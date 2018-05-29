@@ -54,6 +54,7 @@ class Board extends React.Component {
       headerRight: (
         <Button
           type='custom'
+          backgroundColor={'#181c36'}
           borderColor={'#0077b3'}
           borderRadius={5}
           onPress={() => navigation.navigate('LogOut')}

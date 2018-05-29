@@ -19,8 +19,6 @@ import Styles from '../Styles';
 
 class Note extends React.Component {
   state = {
-    noteTitle: '',
-    noteBody: '',
     width: 100,
     widthLandscape: 650,
     widthPortrait: 370
@@ -34,14 +32,26 @@ class Note extends React.Component {
     this.props.noteChanged(text);
   }
 
-  onNoteAddPress() {
-    const { title, note, user } = this.props;
-    this.props.noteSave({title, note, uid: user.uid});
+  onNoteSavePress({ title, note, uid }) {
+    this.props.noteSave({title, note, uid});
   }
 
-  onNoteCreatePress() {
-    const { title, note } = this.props;
+  onNoteCreatePress({ title, note }) {
     this.props.noteCreate({ title, note });
+  }
+
+  handleClick = () => {
+    const { navigation } = this.props;
+    const uid = navigation.getParam('uid','NO-UID');
+    const { title, note, user } = this.props;
+
+    console.log(`handleClick() uid: ${uid}`);
+
+    if(uid == 'NO-UID'){
+      this.onNoteCreatePress({ title, note })
+    } else {
+      this.onNoteSavePress({ title, note, uid: user.uid})
+    }
   }
 
   _orientationDidChange(orientation){
@@ -59,6 +69,7 @@ class Note extends React.Component {
       headerRight: (
         <Button
           type='custom'
+          backgroundColor={'#181c36'}
           borderColor={'#0077b3'}
           borderRadius={5}
           onPress={() => navigation.navigate('LogOut')}
@@ -84,7 +95,12 @@ class Note extends React.Component {
   }
 
   render() {
-    const { noteTitle, noteBody, width } = this.state;
+    const { width } = this.state;
+    const { navigation } = this.props;
+    const uid = navigation.getParam('uid','NO-UID');
+    const buttonText = uid == 'NO-UID' ? 'Add Note' : 'Update Note';
+
+    console.log(`render() uid: ${uid}`);
 
     let newStyle = {
       width
@@ -123,12 +139,13 @@ class Note extends React.Component {
         <View style={Styles.noteButtonView}>
           <Button
             type='custom'
+            onPress={this.handleClick}
             backgroundColor={'#181c36'}
             borderColor={'#0077b3'}
             borderRadius={5}
             shadowHeight={2}
           >
-            Add Note
+            {buttonText}
           </Button>
         </View>
       </View>

@@ -26,7 +26,7 @@ export default StyleSheet.create({
     color: '#fff'
   },
   noteButtonView: {
-    flex: 1, 
+    flex: 1,
     padding: 10,
     backgroundColor: '#181c36'
   },
@@ -34,11 +34,30 @@ export default StyleSheet.create({
     fontSize: 20,
     color: '#0077b3'
   },
+  logInErrorText: {
+    fontSize: 20,
+    color: '#FF0000'
+  },
+  logInLabelText: {
+    fontSize: 13,
+    color: '#fff'
+  },
+  logInTextInput: {
+    fontSize: 20,
+    color: '#fff'
+  },
+  backGroundView: {
+    backgroundColor: '#181c36'
+  },
+  logOutTextInput: {
+    fontSize: 30,
+    color: '#fff'
+  },
   container: {
     flex: 1,
+    backgroundColor: '#181c36',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#181c36',
   },
   subContainerStyle: {
     justifyContent: 'center',
