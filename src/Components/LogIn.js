@@ -96,7 +96,7 @@ class LogIn extends React.Component {
             </Text>
             <TextInput
               placeholder='email@gmail.com'
-              placeholderTextColor='#0077b3'
+              placeholderTextColor='white'
               onChangeText={this.onEmailChange.bind(this)}
               value={this.props.email}
               style={Styles.logInTextInput}

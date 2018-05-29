@@ -9,7 +9,7 @@ export default StyleSheet.create({
   borderNoteListText: {
     padding: 10,
     fontSize: 13,
-    color: 'white'
+    color: '#fff'
   },
   borderView: {
     flex: 1,
@@ -34,13 +34,17 @@ export default StyleSheet.create({
     fontSize: 20,
     color: '#0077b3'
   },
+  noteListItemText: {
+    fontSize: 10,
+    color: '#fff'
+  },
   logInErrorText: {
     fontSize: 20,
     color: '#FF0000'
   },
   logInLabelText: {
     fontSize: 13,
-    color: '#fff'
+    color:'#0077b3'
   },
   logInTextInput: {
     fontSize: 20,

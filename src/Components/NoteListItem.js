@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, TouchableHighlight, Text } from 'react-native';
+import {
+  View,
+  TouchableHighlight,
+  Text
+} from 'react-native';
+import Button from 'react-native-flat-button';
+import Styles from '../Styles';
 
 class NoteListItem extends React.Component {
   onRowPress() {
@@ -10,15 +16,19 @@ class NoteListItem extends React.Component {
     const { title, note } = this.props.note;
 
     return (
-      <TouchableHighlight
-        onPress={this.onRowPress.bind(this)}
+      <View>
+        <Button
+          onPress={() => this.props.navigation.navigate('Note')}
+          type='custom'
+          backgroundColor={'#181c36'}
+          borderColor={'#0077b3'}
+          borderRadius={5}
+          shadowHeight={2}
+          activeOpacity={1}
         >
-        <View>
-          <Text>
-            {title}
-          </Text>
-        </View>
-      </TouchableHighlight>
+          {title}
+        </Button>
+      </View>
     );
   };
 }

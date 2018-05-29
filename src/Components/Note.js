@@ -24,6 +24,10 @@ class Note extends React.Component {
     widthPortrait: 370
   };
 
+  _focusNextField(nextField){
+    this.refs[nextField].focus()
+  }
+
   onTitleChanged(text) {
     this.props.titleChanged(text);
   }
@@ -113,6 +117,7 @@ class Note extends React.Component {
       >
         <View style={{ flex: 2, padding: 10, backgroundColor: '#181c36', width: width}}>
           <TextInput
+            ref='1'
             placeholder='Title'
             placeholderTextColor='#0077b3'
             editable={true}
@@ -121,10 +126,14 @@ class Note extends React.Component {
             value={this.props.title}
             onChangeText={this.onTitleChanged.bind(this)}
             style={Styles.noteTextInput}
+            blurOnSubmit={false}
+            onSubmitEditing={() => this._focusNextField('2')}
+            returnKeyType={'next'}
           />
         </View>
         <View style={{ flex: 2, padding: 10, backgroundColor: '#181c36', width: width}}>
           <TextInput
+            ref='2'
             placeholder="Note"
             placeholderTextColor='#0077b3'
             editable={true}
@@ -134,12 +143,13 @@ class Note extends React.Component {
             value={this.props.note}
             onChangeText={this.onNoteChanged.bind(this)}
             style={Styles.noteTextInput}
+            returnKeyType={'done'}
           />
         </View>
         <View style={Styles.noteButtonView}>
           <Button
             type='custom'
-            onPress={this.handleClick}
+            onPress={this.handleClick.bind(this)}
             backgroundColor={'#181c36'}
             borderColor={'#0077b3'}
             borderRadius={5}
