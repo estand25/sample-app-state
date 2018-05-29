@@ -8,7 +8,12 @@ import {
 } from 'react-native';
 import Button from 'react-native-flat-button';
 import {
-  orientationChanged
+  orientationChanged,
+  noteSave,
+  titleChanged,
+  noteChanged,
+  noteCreate,
+  noteDelete,
 } from '../Actions';
 import Styles from '../Styles';
 
@@ -20,6 +25,24 @@ class Note extends React.Component {
     widthLandscape: 650,
     widthPortrait: 370
   };
+
+  onTitleChanged(text) {
+    this.props.titleChanged(text);
+  }
+
+  onNoteChanged(text) {
+    this.props.noteChanged(text);
+  }
+
+  onNoteAddPress() {
+    const { title, note, user } = this.props;
+    this.props.noteSave({title, note, uid: user.uid});
+  }
+
+  onNoteCreatePress() {
+    const { title, note } = this.props;
+    this.props.noteCreate({ title, note });
+  }
 
   _orientationDidChange(orientation){
     const { widthLandscape, widthPortrait } = this.state;
@@ -54,6 +77,7 @@ class Note extends React.Component {
     } else {
       var orientation = 'PORTRAIT';
     }
+
     console.log(`Orientation: ${orientation}`);
     this.props.orientationChanged(orientation);
     this._orientationDidChange(orientation);
@@ -71,32 +95,59 @@ class Note extends React.Component {
         onLayout={this.onLayout.bind(this)}
         style={Styles.container}
       >
-        <View style={{ flex: 1, padding: 10, backgroundColor: '#fff', width: width}}>
+        <View style={{ flex: 2, padding: 10, backgroundColor: '#181c36', width: width}}>
           <TextInput
             placeholder='Title'
+            placeholderTextColor='#0077b3'
             editable={true}
-            maxLength={2}
-            // style={{ flex: 1}}
-            value={noteTitle}
+            multiline={true}
+            maxLength={50}
+            value={this.props.title}
+            onChangeText={this.onTitleChanged.bind(this)}
+            style={Styles.noteTextInput}
           />
         </View>
-        <View style={{ flex: 2, padding: 10, backgroundColor: '#fff', width: width}}>
+        <View style={{ flex: 2, padding: 10, backgroundColor: '#181c36', width: width}}>
           <TextInput
             placeholder="Note"
+            placeholderTextColor='#0077b3'
             editable={true}
-            maxLength={40}
-            // style={{ flex: 1}}
-            value={noteBody}
+            multiline={true}
+            maxLength={250}
+            keyboardAppearance='dark'
+            value={this.props.note}
+            onChangeText={this.onNoteChanged.bind(this)}
+            style={Styles.noteTextInput}
           />
+        </View>
+        <View style={Styles.noteButtonView}>
+          <Button
+            type='custom'
+            backgroundColor={'#181c36'}
+            borderColor={'#0077b3'}
+            borderRadius={5}
+            shadowHeight={2}
+          >
+            Add Note
+          </Button>
         </View>
       </View>
     );
   }
 }
 
- const mapStateToProps = ({ orie }) => {
+ const mapStateToProps = ({ orie, currentNote, auth }) => {
    const { orientation } = orie;
-   return { orientation };
+   const { title, note } = currentNote;
+   const { user } = auth;
+   return { orientation, title, note, user };
  }
 
-export default connect(mapStateToProps, {orientationChanged})(Note);
+export default connect(mapStateToProps, {
+  orientationChanged,
+  noteSave,
+  titleChanged,
+  noteChanged,
+  noteCreate,
+  noteDelete,
+})(Note);

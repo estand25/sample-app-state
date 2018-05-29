@@ -99,7 +99,7 @@ class LogIn extends React.Component {
           <View>
             <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 13,
                   color: 'white'
                 }}
             >
@@ -119,7 +119,7 @@ class LogIn extends React.Component {
             <View>
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 13,
                   color: 'white'
                 }}
               >
@@ -138,10 +138,10 @@ class LogIn extends React.Component {
               />
           </View>
         </View>
-        <View style={{backgroundColor: '#181c36'}}>
+        <View style={{ backgroundColor: '#181c36' }}>
           {this.renderButton()}
         </View>
-        <View style={{backgroundColor: '#181c36'}}>
+        <View style={{ backgroundColor: '#181c36' }}>
           {this.renderError()}
         </View>
       </View>

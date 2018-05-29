@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
-import active_note from './reducer_active_note';
+import ReduxerNotes from './ReducerNotes';
+import ReducerNote from './ReducerNote';
 import ReducerNav from './ReducerNav';
 import ReducerUser from './ReducerUser';
 import ReducerOrie from './ReducerOrie'
 
 const rootReducer = combineReducers({
-  activeNote: active_note,
+  notes: ReduxerNotes,
+  currentNote: ReducerNote,
   navigation: ReducerNav,
   auth: ReducerUser,
   orie: ReducerOrie,
