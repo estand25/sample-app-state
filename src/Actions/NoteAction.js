@@ -11,7 +11,6 @@ import {
   CREATE_NOTE_SUCCESS,
   NOTE_FETCH_SUCCESS,
   DELETE_NOTE,
-  NOTE_FETCH_SUCCESS_COMPLETED,
 } from './types';
 
 export const selectNote = ({title, note}) => ({
@@ -66,7 +65,6 @@ export const notesFetch = () => {
           payload: snapshot.val()
         });
       });
-      // dispatch({ type: NOTE_FETCH_SUCCESS_COMPLETED });
   };
 };
 

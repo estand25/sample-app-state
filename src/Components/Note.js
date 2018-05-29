@@ -4,7 +4,7 @@ import {
   View,
   TextInput,
   Text,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 import Button from 'react-native-flat-button';
 import {

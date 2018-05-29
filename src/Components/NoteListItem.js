@@ -8,10 +8,6 @@ import Button from 'react-native-flat-button';
 import Styles from '../Styles';
 
 class NoteListItem extends React.Component {
-  onRowPress() {
-    this.props.navigation.navigate('Note');
-  }
-
   render() {
     const { title, note } = this.props.note;
 

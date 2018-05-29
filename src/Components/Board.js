@@ -7,7 +7,8 @@ import {
   View,
   TextInput,
   Text,
-  FlatList
+  FlatList,
+  ActivityIndicator,
 } from 'react-native'
 import Button from 'react-native-flat-button'
 import {
@@ -27,9 +28,7 @@ class Board extends React.Component {
 
   noteList() {
     // if(this.props.loading){
-    //   if(!_.isEmpty(this.props.notes)){
-    //     return <ActivityIndicator size='large' />
-    //   }
+      // return <ActivityIndicator size='large' />
 
       if(_.isEmpty(this.props.notes)){
         return (
@@ -94,7 +93,6 @@ class Board extends React.Component {
 
 const mapStateToProps = (state) => {
   const notes = _.map(state.notes, (val, uid) => ({ ...val, uid }));
-  // const { loading } = state.notes;
   return { notes };
 }
 
