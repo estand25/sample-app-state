@@ -11,6 +11,7 @@ import {
   CREATE_NOTE_SUCCESS,
   NOTE_FETCH_SUCCESS,
   DELETE_NOTE,
+  NOTE_FETCH_SUCCESS_COMPLETED,
 } from './types';
 
 export const selectNote = ({title, note}) => ({
@@ -48,7 +49,7 @@ export const noteCreate = ({ title, note }) => {
     firebase.database().ref(`/users/${currentUser.uid}/notes`)
       .push({ title, note })
       .then(() => {
-        dispatch({ CREATE_NOTE_SUCCESS });
+        dispatch({ type: CREATE_NOTE_SUCCESS });
         goToBoard(dispatch);
       })
   };
@@ -65,6 +66,7 @@ export const notesFetch = () => {
           payload: snapshot.val()
         });
       });
+      // dispatch({ type: NOTE_FETCH_SUCCESS_COMPLETED });
   };
 };
 

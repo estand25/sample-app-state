@@ -26,19 +26,22 @@ class Board extends React.Component {
   }
 
   noteList() {
-    if(_.isEmpty(this.props.notes)){
-      return (
-        <View
-          style={Styles.borderNoteListView}>
-          <Text
-              style={Styles.borderNoteListText}>
-            No Notes
-          </Text>
-        </View>
-      );
-    }
+    // if(this.props.loading){
+    //   if(!_.isEmpty(this.props.notes)){
+    //     return <ActivityIndicator size='large' />
+    //   }
 
-    console.log(this.props.notes);
+      if(_.isEmpty(this.props.notes)){
+        return (
+          <View style={Styles.borderNoteListView}>
+            <Text style={Styles.borderNoteListText}>
+              No Notes
+            </Text>
+          </View>
+        );
+      }
+    // }
+
     return (
       <FlatList
         data={this.props.notes}
@@ -91,7 +94,7 @@ class Board extends React.Component {
 
 const mapStateToProps = (state) => {
   const notes = _.map(state.notes, (val, uid) => ({ ...val, uid }));
-
+  // const { loading } = state.notes;
   return { notes };
 }
 

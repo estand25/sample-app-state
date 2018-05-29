@@ -24,8 +24,15 @@ class Note extends React.Component {
     widthPortrait: 370
   };
 
-  _focusNextField(nextField){
-    this.refs[nextField].focus()
+  constructor(props) {
+    super(props);
+
+    this._focusNextField = this._focusNextField.bind(this);
+    this.inputs = {};
+  }
+
+  _focusNextField(id){
+    this.inputs[id].focus();
   }
 
   onTitleChanged(text) {
@@ -52,8 +59,10 @@ class Note extends React.Component {
     console.log(`handleClick() uid: ${uid}`);
 
     if(uid == 'NO-UID'){
+      console.log(`handleClick() onNoteCreatePress`);
       this.onNoteCreatePress({ title, note })
     } else {
+      console.log(`handleClick() onNoteSavePress`);
       this.onNoteSavePress({ title, note, uid: user.uid})
     }
   }
@@ -117,12 +126,15 @@ class Note extends React.Component {
       >
         <View style={{ flex: 2, padding: 10, backgroundColor: '#181c36', width: width}}>
           <TextInput
-            ref='1'
+            ref={ input => {
+              this.inputs['1'] = input;
+            }}
             placeholder='Title'
             placeholderTextColor='#0077b3'
             editable={true}
             multiline={true}
             maxLength={50}
+            keyboardAppearance='dark'
             value={this.props.title}
             onChangeText={this.onTitleChanged.bind(this)}
             style={Styles.noteTextInput}
@@ -133,7 +145,9 @@ class Note extends React.Component {
         </View>
         <View style={{ flex: 2, padding: 10, backgroundColor: '#181c36', width: width}}>
           <TextInput
-            ref='2'
+            ref={ input => {
+              this.inputs['2'] = input;
+            }}
             placeholder="Note"
             placeholderTextColor='#0077b3'
             editable={true}
@@ -144,6 +158,7 @@ class Note extends React.Component {
             onChangeText={this.onNoteChanged.bind(this)}
             style={Styles.noteTextInput}
             returnKeyType={'done'}
+            blurOnSubmit={true}
           />
         </View>
         <View style={Styles.noteButtonView}>

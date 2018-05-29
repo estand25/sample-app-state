@@ -14,15 +14,16 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
+  // console.log(`ReducersNote - ${action.type} = ${CREATE_NOTE_SUCCESS}`);
   switch (action.type) {
     case SELECT_NOTE:
       return action.payload;
     case SAVE_NOTE_SUCCESS:
       return INITIAL_STATE;
     case CREATE_NOTE_SUCCESS:
-      return INITAL_STATE;
+      return INITIAL_STATE;
     case DELETE_NOTE:
-      return INITAL_STATE;
+      return INITIAL_STATE;
     case TITLE_CHANGED:
       return { ...state, title: action.payload };
     case NOTE_CHANGED:
