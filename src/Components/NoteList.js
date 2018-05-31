@@ -1,21 +1,24 @@
 import React from 'react';
 import _ from 'lodash';
-import { FlatList, ActivityIndicator } from 'react-native';
+import {
+  View,
+  FlatList,
+  ActivityIndicator
+} from 'react-native';
 import Button from 'react-native-flat-button';
 import NoteListItem from './NoteListItem';
 import Styles from '../Styles';
 
 class NoteList extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
-
   renderItem({ item }){
-    return <NoteListItem note={item} />;
+    return <NoteListItem
+              note={item} 
+              navigation={this.props.navigation}
+            />;
   }
-  
+
   noteList() {
+    console.log(`NoteList: ${this.props.navigation}`);
     return (
       <FlatList
         data={this.props.notes}
@@ -26,6 +29,7 @@ class NoteList extends React.Component {
   }
 
   render(){
+    // console.log('NoteList - render()');
     return(
       <View>
         {this.noteList()}
@@ -34,4 +38,4 @@ class NoteList extends React.Component {
   };
 }
 
-export default noteList;
+export default NoteList;

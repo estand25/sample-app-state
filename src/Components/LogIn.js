@@ -6,6 +6,7 @@ import {
   TextInput,
   ActivityIndicator,
   Dimensions,
+  Platform
 } from 'react-native';
 import Button from 'react-native-flat-button';
 import {
@@ -20,7 +21,7 @@ class LogIn extends React.Component {
   static navigationOptions = {
     title: 'Log In',
     headerStyle: {
-      padding: 5
+      paddingTop: Platform == 'iso' ? 35 : 5
     }
   }
 

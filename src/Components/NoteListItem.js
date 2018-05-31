@@ -10,6 +10,9 @@ import Styles from '../Styles';
 class NoteListItem extends React.Component {
   render() {
     const { title, note } = this.props.note;
+    const { navigation } = this.props;
+
+    console.log(`Navigation: ${navigation}`);
 
     return (
       <View>

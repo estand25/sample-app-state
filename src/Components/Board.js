@@ -9,6 +9,7 @@ import {
   Text,
   FlatList,
   ActivityIndicator,
+  Platform
 } from 'react-native'
 import Button from 'react-native-flat-button'
 import {
@@ -84,7 +85,10 @@ class Board extends React.Component {
             Add New Notes
           </Button>
         </View>
-        <NoteList notes={this.props.notes} />
+        <NoteList
+          notes={this.props.notes}
+          navigation={this.props.navigation}
+        />
       </View>
     )
   }
