@@ -15,6 +15,7 @@ import {
   notesFetch
 } from '../Actions'
 import NoteListItem from './NoteListItem'
+import NoteList from './NoteList';
 import Styles from '../Styles'
 
 class Board extends React.Component {
@@ -22,33 +23,33 @@ class Board extends React.Component {
     this.props.notesFetch();
   }
 
-  renderItem({ item }){
-    return <NoteListItem note={item} />;
-  }
-
-  noteList() {
-    // if(this.props.loading){
-      // return <ActivityIndicator size='large' />
-
-      if(_.isEmpty(this.props.notes)){
-        return (
-          <View style={Styles.borderNoteListView}>
-            <Text style={Styles.borderNoteListText}>
-              No Notes
-            </Text>
-          </View>
-        );
-      }
-    // }
-
-    return (
-      <FlatList
-        data={this.props.notes}
-        renderItem={this.renderItem}
-        keyExtractor={(item) => item.uid}
-      />
-    );
-  }
+  // renderItem({ item }){
+  //   return <NoteListItem note={item} />;
+  // }
+  //
+  // noteList() {
+  //   // if(this.props.loading){
+  //     // return <ActivityIndicator size='large' />
+  //
+  //     if(_.isEmpty(this.props.notes)){
+  //       return (
+  //         <View style={Styles.borderNoteListView}>
+  //           <Text style={Styles.borderNoteListText}>
+  //             No Notes
+  //           </Text>
+  //         </View>
+  //       );
+  //     }
+  //   // }
+  //
+  //   return (
+  //     <FlatList
+  //       data={this.props.notes}
+  //       renderItem={this.renderItem}
+  //       keyExtractor={(item) => item.uid}
+  //     />
+  //   );
+  // }
 
   static navigationOptions  = ({ navigation }) => {
     return {
@@ -83,13 +84,15 @@ class Board extends React.Component {
             Add New Notes
           </Button>
         </View>
-        <View>
-          {this.noteList()}
-        </View>
+        <NoteList notes={this.props.notes} />
       </View>
     )
   }
 }
+
+//<View>
+//  {this.noteList()}
+//</View>
 
 const mapStateToProps = (state) => {
   const notes = _.map(state.notes, (val, uid) => ({ ...val, uid }));

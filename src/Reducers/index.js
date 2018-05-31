@@ -3,7 +3,7 @@ import ReduxerNotes from './ReducerNotes';
 import ReducerNote from './ReducerNote';
 import ReducerNav from './ReducerNav';
 import ReducerUser from './ReducerUser';
-import ReducerOrie from './ReducerOrie'
+import ReducerOrie from './ReducerOrie';
 
 const rootReducer = combineReducers({
   notes: ReduxerNotes,
