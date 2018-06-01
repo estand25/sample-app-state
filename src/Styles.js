@@ -1,6 +1,16 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
+  noteListItemContainer: {
+    paddingTop: 60,
+    alignItems: 'center',
+  },
+  noteListItemButtom: {
+    marginBottom: 30,
+    alignItems: 'center',
+    backgroundColor: '#0077b3',
+    borderRadius: 5,
+  },
   noteListItem: {
     alignItems: 'center',
     backgroundColor: '#181c36',

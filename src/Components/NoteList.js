@@ -12,8 +12,8 @@ import Styles from '../Styles';
 class NoteList extends React.Component {
   renderItem({ item }){
     return <NoteListItem
-              note={item} 
-              navigation={this.props.navigation}
+              note={item}
+              // navigation={this.props.navigation}
             />;
   }
 
