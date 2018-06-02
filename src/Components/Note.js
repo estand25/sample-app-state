@@ -103,8 +103,8 @@ class Note extends React.Component {
     }
 
     console.log(`Orientation: ${orientation}`);
-    this.props.orientationChanged(orientation);
     this._orientationDidChange(orientation);
+    this.props.orientationChanged(orientation);
   }
 
   render() {
@@ -124,7 +124,7 @@ class Note extends React.Component {
         onLayout={this.onLayout.bind(this)}
         style={Styles.container}
       >
-        <View style={{ flex: 2, padding: 10, backgroundColor: '#181c36', width: width}}>
+        <View style={{ flex: 2, padding: 10, backgroundColor: '#181c36', borderColor: '#0077b3', width: width}}>
           <TextInput
             ref={ input => {
               this.inputs['1'] = input;

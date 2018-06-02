@@ -1,5 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {
+  connect
+} from 'react-redux';
 import {
   View,
   TouchableHighlight,
@@ -19,15 +21,17 @@ class NoteListItem extends React.Component {
     widthPortrait: 370
   };
 
-
-    _orientationDidChange(orientation){
-      const { widthLandscape, widthPortrait } = this.state;
-      if(orientation == 'LANDSCAPE'){
-        this.setState({width: widthLandscape})
-      } else {
-        this.setState({width: widthPortrait})
-      }
+  _orientationDidChange(orientation){
+    console.log(`orientationDidChange`);
+    const { widthLandscape, widthPortrait } = this.state;
+    if(orientation == 'LANDSCAPE'){
+      this.setState({width: widthLandscape})
+    } else {
+      this.setState({width: widthPortrait})
     }
+    const { width } = this.state;
+    console.log(`orientationDidChange - Width: ${width}`);
+  }
 
   onLayout(e) {
     const {width, height} = Dimensions.get('window');
@@ -37,8 +41,7 @@ class NoteListItem extends React.Component {
       var orientation = 'PORTRAIT';
     }
 
-    console.log(`Orientation: ${orientation}`);
-    this.props.orientationChanged(orientation);
+    console.log(`onLayout Orientation: ${orientation}`);
     this._orientationDidChange(orientation);
   }
 
@@ -46,9 +49,6 @@ class NoteListItem extends React.Component {
   render() {
     const { width } = this.state;
     const { title, note } = this.props.note;
-    const { navigation } = this.props;
-
-    console.log(`Navigation: ${navigation}`);
 
     return (
       <View
@@ -60,8 +60,10 @@ class NoteListItem extends React.Component {
         >
         <TouchableHighlight
           style={{
-            marginBottom: 10,
+            marginTop: 5,
+            marginBottom: 5,
             alignItems: 'center',
+            justifyContent: 'center',
             backgroundColor: '#0077b3',
             borderRadius: 5,
             width: width }}

@@ -1,5 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {
+  connect
+} from 'react-redux';
 import {
   View,
   Text,
@@ -81,7 +83,7 @@ class LogIn extends React.Component {
     } else {
       var orientation = 'PORTRAIT';
     }
-    console.log(`Orientation: ${orientation}`);
+    console.log(`LogIn Orientation: ${orientation}`);
     this.props.orientationChanged(orientation);
   }
 

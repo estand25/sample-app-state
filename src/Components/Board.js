@@ -24,34 +24,6 @@ class Board extends React.Component {
     this.props.notesFetch();
   }
 
-  // renderItem({ item }){
-  //   return <NoteListItem note={item} />;
-  // }
-  //
-  // noteList() {
-  //   // if(this.props.loading){
-  //     // return <ActivityIndicator size='large' />
-  //
-  //     if(_.isEmpty(this.props.notes)){
-  //       return (
-  //         <View style={Styles.borderNoteListView}>
-  //           <Text style={Styles.borderNoteListText}>
-  //             No Notes
-  //           </Text>
-  //         </View>
-  //       );
-  //     }
-  //   // }
-  //
-  //   return (
-  //     <FlatList
-  //       data={this.props.notes}
-  //       renderItem={this.renderItem}
-  //       keyExtractor={(item) => item.uid}
-  //     />
-  //   );
-  // }
-
   static navigationOptions  = ({ navigation }) => {
     return {
       title: 'Board',
@@ -70,6 +42,9 @@ class Board extends React.Component {
   };
 
   render(){
+    const { orientation } = this.props;
+    console.log(`Board Orientation: ${orientation}`);
+
     return (
       <View style={Styles.borderView}>
         <View
@@ -94,13 +69,10 @@ class Board extends React.Component {
   }
 }
 
-//<View>
-//  {this.noteList()}
-//</View>
-
 const mapStateToProps = (state) => {
   const notes = _.map(state.notes, (val, uid) => ({ ...val, uid }));
-  return { notes };
+  const { orientation } = state.orie;
+  return { notes, orientation };
 }
 
 export default connect(mapStateToProps,{

@@ -29,7 +29,6 @@ class NoteList extends React.Component {
   }
 
   render(){
-    // console.log('NoteList - render()');
     return(
       <View>
         {this.noteList()}
