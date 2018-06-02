@@ -40,8 +40,9 @@ class LogIn extends React.Component {
   }
 
   onButtonPress() {
-    const { email, password } = this.props;
+    const { email, password, orientation } = this.props;
     this.props.loginUser({ email, password });
+    this.onLayout(null);
   }
 
   renderButton() {

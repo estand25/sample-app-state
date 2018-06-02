@@ -48,7 +48,7 @@ class NoteListItem extends React.Component {
 
   render() {
     const { width } = this.state;
-    const { title, note } = this.props.note;
+    const { title, note, onPress } = this.props.note;
 
     return (
       <View
@@ -59,6 +59,7 @@ class NoteListItem extends React.Component {
           width: width }}
         >
         <TouchableHighlight
+          onPress={onPress}
           style={{
             marginTop: 5,
             marginBottom: 5,

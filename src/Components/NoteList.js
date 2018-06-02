@@ -13,7 +13,7 @@ class NoteList extends React.Component {
   renderItem({ item }){
     return <NoteListItem
               note={item}
-              // navigation={this.props.navigation}
+              onPress={this.props.navigation.navigate('note')}
             />;
   }
 
