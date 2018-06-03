@@ -14,52 +14,17 @@ import {
 } from '../Actions';
 import Styles from '../Styles';
 
-class NoteListItem extends React.Component {
-  state = {
-    width: 100,
-    widthLandscape: 650,
-    widthPortrait: 370
-  };
-
-  _orientationDidChange(orientation){
-    console.log(`orientationDidChange`);
-    const { widthLandscape, widthPortrait } = this.state;
-    if(orientation == 'LANDSCAPE'){
-      this.setState({width: widthLandscape})
-    } else {
-      this.setState({width: widthPortrait})
-    }
-    const { width } = this.state;
-    console.log(`orientationDidChange - Width: ${width}`);
-  }
-
-  onLayout(e) {
-    const {width, height} = Dimensions.get('window');
-    if(width > height){
-      var orientation = 'LANDSCAPE';
-    } else {
-      var orientation = 'PORTRAIT';
-    }
-
-    console.log(`onLayout Orientation: ${orientation}`);
-    this._orientationDidChange(orientation);
-  }
-
-
-  render() {
-    const { width } = this.state;
-    const { title, note, onPress } = this.props.note;
+NoteListItem = ({noteItem}) => {
+    const { title, note } = noteItem;
 
     return (
       <View
-        onLayout={this.onLayout.bind(this)}
         style={{
           alignItems: 'center',
-          justifyContent: 'center',
-          width: width }}
+          justifyContent: 'center' }}
         >
         <TouchableHighlight
-          onPress={onPress}
+          // onPress={() => this.props.navigation.navigate('Note')}
           style={{
             marginTop: 5,
             marginBottom: 5,
@@ -67,7 +32,10 @@ class NoteListItem extends React.Component {
             justifyContent: 'center',
             backgroundColor: '#0077b3',
             borderRadius: 5,
-            width: width }}
+            shadowColor: '#fff',
+            shadowOffset: { width: 0, height: 10 },
+            shadowRadius: 10,
+           }}
           >
           <View>
             <Text>{title}</Text>
@@ -75,20 +43,6 @@ class NoteListItem extends React.Component {
         </TouchableHighlight>
       </View>
     );
-  };
 }
 
-//onPress={() => this.props.navigation.navigate('Note')}
-//type='custom'
-//backgroundColor={'#181c36'}
-//borderColor={'#0077b3'}
-//borderRadius={5}
-//shadowHeight={2}
-//activeOpacity={1}
-const mapStateToProps = ({ orie }) => {
-  const { orientation } = orie;
-  return { orientation };
-}
-export default connect(mapStateToProps, {
-  orientationChanged
-})(NoteListItem);
+export default NoteListItem;
