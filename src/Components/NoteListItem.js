@@ -6,16 +6,18 @@ import {
   View,
   TouchableHighlight,
   Text,
-  Dimensions
 } from 'react-native';
-import Button from 'react-native-flat-button';
 import {
-  orientationChanged
+  NavigationActions,
+} from 'react-navigation';
+import {
+  gotoSaveNote
 } from '../Actions';
 import Styles from '../Styles';
 
-NoteListItem = ({noteItem}) => {
-    const { title, note } = noteItem;
+class NoteListItem extends React.Component {
+  render() {
+    const { title, note } = this.props.noteItem;
 
     return (
       <View
@@ -24,7 +26,7 @@ NoteListItem = ({noteItem}) => {
           justifyContent: 'center' }}
         >
         <TouchableHighlight
-          // onPress={() => this.props.navigation.navigate('Note')}
+          onPress={this.props.gotoSaveNote()}
           style={{
             marginTop: 5,
             marginBottom: 5,
@@ -32,9 +34,6 @@ NoteListItem = ({noteItem}) => {
             justifyContent: 'center',
             backgroundColor: '#0077b3',
             borderRadius: 5,
-            shadowColor: '#fff',
-            shadowOffset: { width: 0, height: 10 },
-            shadowRadius: 10,
            }}
           >
           <View>
@@ -43,6 +42,7 @@ NoteListItem = ({noteItem}) => {
         </TouchableHighlight>
       </View>
     );
+  }
 }
 
-export default NoteListItem;
+export default connect(null, {gotoSaveNote})(NoteListItem);

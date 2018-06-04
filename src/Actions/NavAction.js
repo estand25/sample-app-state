@@ -9,6 +9,14 @@ export const goToBoard = (dispatch) => {
   }));
 }
 
+export const gotoSaveNote = () => {
+  return (dispatch) => {
+    dispatch(NavigationActions.navigate({
+      routeName: 'Note',
+    }))
+  }
+}
+
 export const goToLogOut = (dispatch) => {
   const resetAction = StackActions.reset({
     index: 1,
