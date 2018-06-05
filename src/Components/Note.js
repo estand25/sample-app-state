@@ -110,10 +110,15 @@ class Note extends React.Component {
   render() {
     const { width } = this.state;
     const { navigation } = this.props;
+
+    console.log(`render() Navigation: ${navigation}`);
+
     const uid = navigation.getParam('uid','NO-UID');
+    const title = navigation.getParam('title','NO-TITLE');
+    const note = navigation.getParam('note','NO-NOTE');
     const buttonText = uid == 'NO-UID' ? 'Add Note' : 'Update Note';
 
-    console.log(`render() uid: ${uid}`);
+    console.log(`render() Title: ${title}, Note: ${note}, & uid: ${uid}`);
 
     let newStyle = {
       width

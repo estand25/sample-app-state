@@ -17,7 +17,9 @@ import Styles from '../Styles';
 
 class NoteListItem extends React.Component {
   onButtonPress() {
-    this.props.gotoSaveNote();
+    const { title, note, uid } = this.props.noteItem;
+    // console.log(`Title: ${title}, Note: ${note}, & uid: ${uid}`);
+    this.props.gotoSaveNote({ title, note, uid });
   }
   render() {
     const { title, note } = this.props.noteItem;

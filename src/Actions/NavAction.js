@@ -9,10 +9,15 @@ export const goToBoard = (dispatch) => {
   }));
 }
 
-export const gotoSaveNote = () => {
+export const gotoSaveNote = ({ title, note, uid }) => {
   return (dispatch) => {
     dispatch(NavigationActions.navigate({
       routeName: 'Note',
+      param: {
+        uid: uid,
+        title: title,
+        note: note,
+      }
     }))
   }
 }
