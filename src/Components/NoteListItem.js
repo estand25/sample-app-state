@@ -16,6 +16,9 @@ import {
 import Styles from '../Styles';
 
 class NoteListItem extends React.Component {
+  onButtonPress() {
+    this.props.gotoSaveNote();
+  }
   render() {
     const { title, note } = this.props.noteItem;
 
@@ -26,7 +29,7 @@ class NoteListItem extends React.Component {
           justifyContent: 'center' }}
         >
         <TouchableHighlight
-          onPress={this.props.gotoSaveNote()}
+          onPress={this.onButtonPress.bind(this)}
           style={{
             marginTop: 5,
             marginBottom: 5,
