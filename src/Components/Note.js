@@ -112,6 +112,7 @@ class Note extends React.Component {
     const { navigation } = this.props;
 
     console.log(`render() Navigation: ${navigation}`);
+    console.log(Object.keys(navigation));
 
     const uid = navigation.getParam('uid','NO-UID');
     const title = navigation.getParam('title','NO-TITLE');
