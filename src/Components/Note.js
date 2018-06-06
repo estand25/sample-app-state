@@ -52,14 +52,14 @@ class Note extends React.Component {
   }
 
   handleClick = () => {
-    const { title, note, user } = this.props;
+    const { navigation } = this.props;
+    const uid = navigation.getParam('uid','NO-UID');
+    const { title, note } = this.props;
 
     if(uid == 'NO-UID'){
       // console.log(`handleClick() onNoteCreatePress`);
       this.onNoteCreatePress({ title, note })
     } else {
-      const { navigation } = this.props;
-      const uid = navigation.getParam('uid','NO-UID');
       // console.log(`handleClick() onNoteSavePress`);
       this.onNoteSavePress({ title, note, uid: uid})
     }

@@ -10,7 +10,7 @@ export const goToBoard = (dispatch) => {
 }
 
 export const gotoSaveNote = ({ title, note, uid }) => {
-  console.log(`NavAction -- Title: ${title}, Note: ${note}, & uid: ${uid}`);
+  // console.log(`NavAction -- Title: ${title}, Note: ${note}, & uid: ${uid}`);
 
   return (dispatch) => {
     dispatch(NavigationActions.navigate({
