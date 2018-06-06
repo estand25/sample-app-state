@@ -52,18 +52,16 @@ class Note extends React.Component {
   }
 
   handleClick = () => {
-    const { navigation } = this.props;
-    const uid = navigation.getParam('uid','NO-UID');
     const { title, note, user } = this.props;
-
-    // console.log(`handleClick() uid: ${uid}`);
 
     if(uid == 'NO-UID'){
       // console.log(`handleClick() onNoteCreatePress`);
       this.onNoteCreatePress({ title, note })
     } else {
+      const { navigation } = this.props;
+      const uid = navigation.getParam('uid','NO-UID');
       // console.log(`handleClick() onNoteSavePress`);
-      this.onNoteSavePress({ title, note, uid: user.uid})
+      this.onNoteSavePress({ title, note, uid: uid})
     }
   }
 
@@ -115,8 +113,8 @@ class Note extends React.Component {
     console.log(Object.keys(navigation));
 
     const uid = navigation.getParam('uid','NO-UID');
-    const title = navigation.getParam('title','NO-TITLE');
-    const note = navigation.getParam('note','NO-NOTE');
+    const title = navigation.getParam('title',this.props.title);
+    const note = navigation.getParam('note',this.props.note);
     const buttonText = uid == 'NO-UID' ? 'Add Note' : 'Update Note';
 
     console.log(`render() Title: ${title}, Note: ${note}, & uid: ${uid}`);
@@ -141,7 +139,7 @@ class Note extends React.Component {
             multiline={true}
             maxLength={50}
             keyboardAppearance='dark'
-            value={this.props.title}
+            value={title}
             onChangeText={this.onTitleChanged.bind(this)}
             style={Styles.noteTextInput}
             blurOnSubmit={false}
@@ -160,7 +158,7 @@ class Note extends React.Component {
             multiline={true}
             maxLength={250}
             keyboardAppearance='dark'
-            value={this.props.note}
+            value={note}
             onChangeText={this.onNoteChanged.bind(this)}
             style={Styles.noteTextInput}
             returnKeyType={'done'}

@@ -15,7 +15,7 @@ export const gotoSaveNote = ({ title, note, uid }) => {
   return (dispatch) => {
     dispatch(NavigationActions.navigate({
       routeName: 'Note',
-      param: {
+      params: {
         uid: uid,
         title: title,
         note: note,
