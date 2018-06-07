@@ -7,12 +7,16 @@ import ReduxThunk from 'redux-thunk';
 import Reducers from './src/Reducers';
 import AppWithNavigationState from './src/Components/Navigator';
 
+import {
+  firebaseApiKey
+} from './src/firebaseApiKey';
+
 const store = createStore(Reducers, applyMiddleware(ReduxThunk));
 
 export default class App extends React.Component {
   componentWillMount(){
     const config = {
-      apiKey: "AIzaSyDolkm7UqD9aaeCdBl7bEuEBurBmqSzTcQ",
+      apiKey: firebaseApiKey,
       authDomain: "sample-app-state.firebaseapp.com",
       databaseURL: "https://sample-app-state.firebaseio.com",
       projectId: "sample-app-state",
