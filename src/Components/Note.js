@@ -58,6 +58,16 @@ class Note extends React.Component {
   handleClick = () => {
     const { navigation } = this.props;
     const uid = navigation.getParam('uid','NO-UID');
+
+    // if(title = 'undefined'){
+      // const { title } = this.props;
+      // console.log(`handleClick() onNoteCreatePress - ${title}`);
+    // }
+
+    // if(note = 'undefined'){
+      // const { note } = this.props;
+      // console.log(`handleClick() onNoteCreatePress - ${note}`);
+    // }
     const { title, note } = this.props;
 
     if(uid == 'NO-UID'){
@@ -113,8 +123,8 @@ class Note extends React.Component {
     const { width } = this.state;
     const { navigation } = this.props;
 
-    console.log(`render() Navigation: ${navigation}`);
-    console.log(Object.keys(navigation));
+    // console.log(`render() Navigation: ${navigation}`);
+    // console.log(Object.keys(navigation));
 
     const uid = navigation.getParam('uid','NO-UID');
     const title = navigation.getParam('title',this.props.title);
