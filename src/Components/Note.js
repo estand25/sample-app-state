@@ -36,18 +36,22 @@ class Note extends React.Component {
   }
 
   onTitleChanged(text) {
+    console.log(`render() Title: ${text}`);
     this.props.titleChanged(text);
   }
 
   onNoteChanged(text) {
+    console.log(`render() Title: ${text}`);
     this.props.noteChanged(text);
   }
 
   onNoteSavePress({ title, note, uid }) {
+    console.log(`render() - Save - Title: ${title}, Note: ${note}, & uid: ${uid}`);
     this.props.noteSave({title, note, uid});
   }
 
   onNoteCreatePress({ title, note }) {
+    console.log(`render() - Create - Title: ${title}, Note: ${note} `);
     this.props.noteCreate({ title, note });
   }
 
