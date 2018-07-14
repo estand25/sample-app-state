@@ -12,8 +12,7 @@ import Styles from '../Styles';
 class NoteList extends React.Component {
   renderItem({ item }){
     return <NoteListItem
-              noteItem={item}
-            />;
+              noteItem={item} />;
   }
 
   noteList() {
